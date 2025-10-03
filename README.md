@@ -1,10 +1,10 @@
-# Gemini CLI Blueprint Extension
+# Blueprint Extension for Gemini CLI
 
 This extension provides a collection of commands giving you a structured and robust workflow for tackling complex software engineering tasks directly within Gemini CLI.
 
 This workflow is designed to guide you from the initial research and planning stages all the way through implementation, following a PLAN --> DEFINE --> ACT loop.
 
-## Core Concepts
+## ✨ Features
 
 The workflow is built around a few core ideas:
 
@@ -12,7 +12,46 @@ The workflow is built around a few core ideas:
 *   **Stateful Tracking:** The workflow uses a series of markdown files (e.g., `PLAN.md`, `TODO.md`, `ACT.md`) to track the state of your task. This allows you to pause and resume your work without losing context.
 *   **User Approval:** The workflow emphasizes safety and collaboration. For any significant action, such as creating a plan or fixing a bug, Gemini will present its proposed changes for your approval before proceeding.
 
-## The Workflow
+## 🚀 Installation
+
+Use the `gemini extensions install` command to install directly from the source repository:
+
+```bash
+gemini extensions install https://github.com/gplasky/gemini-cli-blueprint-extension.git --auto-update
+```
+
+The `--auto-update` is optional: if specified, it will update to new versions as they are released.
+
+You can manage the extension with the following commands:
+
+```bash
+# Update to the latest version
+gemini extensions update blueprint
+
+# Uninstall the extension
+gemini extensions uninstall blueprint
+```
+
+## 🛠️ Available Commands
+
+This extension provides the following commands.
+
+### Primary Commands
+
+*   **/blueprint:research**: Searches for information on a topic.
+*   **/blueprint:plan**: Creates a plan to accomplish your goal.
+*   **/blueprint:define**: For the given plan, defines the specific tasks to achieve the goal.
+*   **/blueprint:implement**: Implements a plan by executing defined tasks.
+*   **/blueprint:test**: Tests the plan's implementation to verify it meets the requirements.
+*   **/blueprint:refine**: Refines any part of the workflow based on user feedback or test failures.
+
+### Utility Commands
+
+*   **/blueprint:resume**: Resumes an interrupted workflow by automatically determining the last completed step.
+*   **/blueprint:clear**: Clears the workspace of all workflow-generated markdown files.
+
+
+## 💡 Usage
 
 The typical workflow follows this sequence:
 
@@ -25,8 +64,6 @@ The typical workflow follows this sequence:
 **Optional:**
 
 *   **/blueprint:refine**: Iterate on any part of the workflow based on test results or your feedback.
-
-## Workflow Diagram
 
 ```mermaid
 sequenceDiagram
@@ -50,23 +87,7 @@ sequenceDiagram
 
 ```
 
-## Commands
-
-This extension provides the following commands:
-
-*   **/blueprint:research**: Searches for information on a topic.
-*   **/blueprint:plan**: Creates a plan to accomplish your goal.
-*   **/blueprint:define**: For the given plan, defines the specific tasks to achieve the goal.
-*   **/blueprint:implement**: Implements a plan by executing defined tasks.
-*   **/blueprint:test**: Tests the plan's implementation to verify it meets the requirements.
-*   **/blueprint:refine**: Refines any part of the workflow based on user feedback or test failures.
-
-### Utility Commands
-
-*   **/blueprint:resume**: Resumes an interrupted workflow by automatically determining the last completed step.
-*   **/blueprint:clear**: Clears the workspace of all workflow-generated markdown files.
-
-## Getting Started
+## ✅ Getting Started
 
 To start a new task, simply invoke the first command in the workflow that makes sense for your needs. For a brand new feature, you might start with `/blueprint:research` or, more commonly, `/blueprint:plan`.
 
