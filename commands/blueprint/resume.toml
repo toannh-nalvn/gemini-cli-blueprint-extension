@@ -1,0 +1,19 @@
+description = "Resumes an interrupted workflow by determining the last completed step."
+prompt = """
+You have been asked to resume the most recent workflow.
+
+## Resume Workflow
+
+Your goal is to determine where the user left off and recommend the next logical step.
+
+## Execution Rules
+1.  **Find Files:** Use your tools to search for workflow files (`RESEARCH.md`, `PLAN.md`, `TODO.md`, `ACT.md`, `TEST.md`) in the current directory and any subdirectories (like `tasks/`).
+2.  **Determine State:** Based on the most recently created file you find, determine the last completed step. The order of precedence is: `TEST.md` -> `ACT.md` -> `TODO.md` -> `PLAN.md` -> `RESEARCH.md`.
+3.  **Summarize and Recommend:**
+    *   If `TEST.md` is the latest file, summarize its contents and recommend the next action (e.g., `/blueprint:refine` if tests failed).
+    *   If `ACT.md` is the latest, summarize the implementation log and recommend `/blueprint:test`.
+    *   If `TODO.md` is the latest, summarize the tasks and recommend `/blueprint:implement`.
+    *   If `PLAN.md` is the latest, summarize the plan and recommend `/blueprint:define`.
+    *   If `RESEARCH.md` is the latest, summarize the research and recommend `/blueprint:plan`.
+4.  **No Files:** If you cannot find any workflow files, inform the user that no active workflow was found and suggest starting with `/blueprint:research` or `/blueprint:plan`.
+"""
