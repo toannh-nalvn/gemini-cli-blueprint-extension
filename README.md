@@ -33,62 +33,21 @@ sequenceDiagram
     participant User
     participant Gemini CLI
 
-    rect rgb(220, 230, 255)
-    opt Research Phase
-        User->>Gemini CLI: /blueprint:research about a topic
-        Gemini CLI-->>User: Creates RESEARCH.md, asks for confirmation
-        User->>Gemini CLI: "Proceed"
-    end
+    User->>Gemini CLI: /blueprint:research
+    Gemini CLI-->>User: Creates RESEARCH.md
 
-    User->>Gemini CLI: /blueprint:plan to create a feature
-    Gemini CLI-->>User: Creates PLAN.md, asks for approval
-    alt User wants changes
-        rect rgb(255, 240, 210)
-        User->>Gemini CLI: /blueprint:refine "Clarify step 2"
-        Gemini CLI-->>User: Proposes update to PLAN.md
-        User->>Gemini CLI: "Proceed"
-        Gemini CLI-->>User: Updates PLAN.md and confirms
-        end
-    else User approves
-        User->>Gemini CLI: "Proceed"
-    end
-    end
+    User->>Gemini CLI: /blueprint:plan
+    Gemini CLI-->>User: Creates PLAN.md
 
-    rect rgb(220, 230, 255)
     User->>Gemini CLI: /blueprint:define
-    Gemini CLI-->>User: Creates TODO.md, asks for approval
-    alt User wants changes
-        rect rgb(255, 240, 210)
-        User->>Gemini CLI: /blueprint:refine "Add a task for X"
-        Gemini CLI-->>User: Proposes update to TODO.md
-        User->>Gemini CLI: "Proceed"
-        Gemini CLI-->>User: Updates TODO.md and confirms
-        end
-    else User approves
-        User->>Gemini CLI: "Proceed"
-    end
-    end
+    Gemini CLI-->>User: Creates TODO.md
 
-    rect rgb(210, 255, 210)
     User->>Gemini CLI: /blueprint:implement
-    Gemini CLI-->>User: Implements code, creates ACT.md, confirms completion
+    Gemini CLI-->>User: Implements code & creates ACT.md
 
     User->>Gemini CLI: /blueprint:test
-    Gemini CLI-->>User: Runs tests, creates TEST.md
-    alt Tests Pass
-        Gemini CLI-->>User: "All tests passed!"
-    else Tests Fail
-        rect rgb(255, 220, 220)
-        Gemini CLI-->>User: "Tests failed. Recommend /blueprint:refine"
+    Gemini CLI-->>User: Runs tests & confirms all pass
 
-        User->>Gemini CLI: /blueprint:refine "Fix the bug"
-        Gemini CLI-->>User: Proposes a fix, asks for approval
-        User->>Gemini CLI: "Proceed"
-        Gemini CLI->>Gemini CLI: Implements fix, re-runs tests
-        Gemini CLI-->>User: "Tests now pass!"
-        end
-    end
-    end
 ```
 
 ## Commands
