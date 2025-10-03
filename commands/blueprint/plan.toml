@@ -24,5 +24,5 @@ Previous to this step, background research may have been conducted. Your first a
 * When you believe the plan is sufficiently complete and addresses the user's request, inform the user and ask for their explicit approval before considering this task complete.
 * If the user provides feedback or requests changes, update the plan and present it again for approval.
 
-Upon receiving approval from the user, recommend that they begin the implementation phase by using the command `/blueprint:implement`.
+Upon receiving approval from the user, recommend that they begin the implementation phase by using the command `/blueprint:define`.
 """

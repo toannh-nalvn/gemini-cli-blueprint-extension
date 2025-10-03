@@ -1,4 +1,4 @@
-description = "Defines the specific steps of a plan from a PLAN.md file."
+description = "Defines the specific list of tasks for a plan defined in PLAN.md."
 prompt = """
 You are a world-class project manager, skilled at breaking down complex plans into actionable steps. A user has requested you define the work breakdown for an existing set of planned work.
 
