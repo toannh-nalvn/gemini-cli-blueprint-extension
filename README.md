@@ -2,7 +2,7 @@
 
 This extension provides a collection of commands giving you a structured and robust workflow for tackling complex software engineering tasks directly within Gemini CLI.
 
-This workflow is designed to guide you from the initial research and planning stages all the way through implementation, following a PLAN --> DEFINE --> ACT loop.
+This workflow is designed to guide you from the initial research and planning stages all the way through implementation, following a PLAN ➡️  DEFINE ➡️  ACT loop.
 
 ## ✨ Features
 
@@ -66,25 +66,15 @@ The typical workflow follows this sequence:
 *   **/blueprint:refine**: Iterate on any part of the workflow based on test results or your feedback.
 
 ```mermaid
-sequenceDiagram
-    participant User
-    participant Gemini CLI
-
-    User->>Gemini CLI: /blueprint:research
-    Gemini CLI-->>User: Creates RESEARCH.md
-
-    User->>Gemini CLI: /blueprint:plan
-    Gemini CLI-->>User: Creates PLAN.md
-
-    User->>Gemini CLI: /blueprint:define
-    Gemini CLI-->>User: Creates TODO.md
-
-    User->>Gemini CLI: /blueprint:implement
-    Gemini CLI-->>User: Implements code & creates ACT.md
-
-    User->>Gemini CLI: /blueprint:test
-    Gemini CLI-->>User: Runs tests & confirms all pass
-
+stateDiagram-v2
+    [*] --> Idle
+    Idle --> Researching: /blueprint#58;research
+    Researching --> Planning: /blueprint#58;plan
+    Planning --> Defining: /blueprint#58;define
+    Defining --> Implementing: /blueprint#58;implement
+    Implementing --> Testing: /blueprint#58;test
+    Testing --> [*]: 'Success'
+    Testing --> Planning: /blueprint#58;refine
 ```
 
 ## ✅ Getting Started
