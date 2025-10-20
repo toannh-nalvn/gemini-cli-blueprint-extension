@@ -1,88 +1,23 @@
-# Blueprint Extension for Gemini CLI
+# Dự đoán loài hoa Iris với thuật toán KNN
 
-This extension provides a collection of commands giving you a structured and robust workflow for tackling complex software engineering tasks directly within Gemini CLI.
+## Giới thiệu
+Đây là một dự án đơn giản nhằm mục đích dự đoán loài hoa Iris (diên vĩ) sử dụng thuật toán phân loại K-Nearest Neighbors (KNN). Dự án này minh họa các bước cơ bản trong một quy trình học máy, từ tải dữ liệu, tiền xử lý, xây dựng mô hình, đánh giá và trực quan hóa kết quả.
 
-This workflow is designed to guide you from the initial research and planning stages all the way through implementation, following a PLAN ➡️  DEFINE ➡️  ACT loop.
-
-## ✨ Features
-
-The workflow is built around a few core ideas:
-
-*   **Step-by-Step Process:** Each command corresponds to a specific phase of a development task. You move from one step to the next, with each command building on the output of the last.
-*   **Stateful Tracking:** The workflow uses a series of markdown files (e.g., `PLAN.md`, `TODO.md`, `ACT.md`) to track the state of your task. This allows you to pause and resume your work without losing context.
-*   **User Approval:** The workflow emphasizes safety and collaboration. For any significant action, such as creating a plan or fixing a bug, Gemini will present its proposed changes for your approval before proceeding.
-
-## 🚀 Installation
-
-Use the `gemini extensions install` command to install directly from the source repository:
+## Cài đặt
+Để chạy dự án này, bạn cần cài đặt các thư viện Python sau:
 
 ```bash
-gemini extensions install https://github.com/gplasky/gemini-cli-blueprint-extension.git --auto-update
+pip install -r requirements.txt
 ```
 
-The `--auto-update` is optional: if specified, it will update to new versions as they are released.
-
-You can manage the extension with the following commands:
+## Cách chạy
+Sau khi cài đặt các thư viện, bạn có thể chạy script chính bằng lệnh:
 
 ```bash
-# Update to the latest version
-gemini extensions update blueprint
-
-# Uninstall the extension
-gemini extensions uninstall blueprint
+python iris_knn.py
 ```
 
-## 🛠️ Available Commands
+Script sẽ tải dữ liệu Iris, huấn luyện mô hình KNN với các giá trị `k` khác nhau, đánh giá độ chính xác và hiển thị biểu đồ so sánh độ chính xác.
 
-This extension provides the following commands.
-
-### Primary Commands
-
-*   **/blueprint:research**: Searches for information on a topic.
-*   **/blueprint:plan**: Creates a plan to accomplish your goal.
-*   **/blueprint:define**: For the given plan, defines the specific tasks to achieve the goal.
-*   **/blueprint:implement**: Implements a plan by executing defined tasks.
-*   **/blueprint:test**: Tests the plan's implementation to verify it meets the requirements.
-*   **/blueprint:refine**: Refines any part of the workflow based on user feedback or test failures.
-
-### Utility Commands
-
-*   **/blueprint:resume**: Resumes an interrupted workflow by automatically determining the last completed step.
-*   **/blueprint:clear**: Clears the workspace of all workflow-generated markdown files.
-
-
-## 💡 Usage
-
-The typical workflow follows this sequence:
-
-1.  **/blueprint:research**: Gather initial information and context.
-2.  **/blueprint:plan**: Create a high-level, step-by-step plan.
-3.  **/blueprint:define**: Break the plan down into a detailed `TODO.md` list.
-4.  **/blueprint:implement**: Execute the tasks in the `TODO.md` list.
-5.  **/blueprint:test**: Verify the implementation against the plan.
-
-**Optional:**
-
-*   **/blueprint:refine**: Iterate on any part of the workflow based on test results or your feedback.
-
-```mermaid
-stateDiagram-v2
-    [*] --> Idle
-    Idle --> Researching: /blueprint#58;research
-    Researching --> Planning: /blueprint#58;plan
-    Planning --> Defining: /blueprint#58;define
-    Defining --> Implementing: /blueprint#58;implement
-    Implementing --> Testing: /blueprint#58;test
-    Testing --> [*]: 'Success'
-    Testing --> Planning: /blueprint#58;refine
-```
-
-## ✅ Getting Started
-
-To start a new task, simply invoke the first command in the workflow that makes sense for your needs. For a brand new feature, you might start with `/blueprint:research` or, more commonly, `/blueprint:plan`.
-
-```
-/blueprint:plan add a new authentication endpoint
-```
-
-Gemini will then guide you through the subsequent steps. If you get interrupted, you can always come back and run `/blueprint:resume` to pick up right where you left off.
+## Kết quả
+Chương trình sẽ in ra độ chính xác của mô hình KNN cho từng giá trị `k` và hiển thị một biểu đồ trực quan hóa độ chính xác theo `k`. Biểu đồ này giúp xác định giá trị `k` tối ưu cho bài toán.

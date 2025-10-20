@@ -9,3 +9,5 @@ This extension provides commands to follow the "Workflow 2: Standard" process.
 *   `/workflow:refine`: Refines a plan.
 *   `/workflow:implement`: Implements a plan.
 *   `/workflow:test`: Tests an implementation.
+*   `/workflow:brainstorm`: Initiates an idea generation (brainstorming) session.
+*   `/workflow:log`: Views and updates a project execution log.
